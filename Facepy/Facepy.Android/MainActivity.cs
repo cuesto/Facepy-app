@@ -9,10 +9,11 @@ using Android.OS;
 
 namespace Facepy.Droid
 {
-	[Activity (Label = "Facepy.Android", MainLauncher = true, Icon = "@drawable/icon")]
+	[Activity (Label = "Facepy", MainLauncher = true, Icon = "@drawable/icon")]
 	public class MainActivity : Activity
 	{
 		int count = 1;
+        Button btnTakePic;
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -23,13 +24,16 @@ namespace Facepy.Droid
 
 			// Get our button from the layout resource,
 			// and attach an event to it
-			Button button = FindViewById<Button> (Resource.Id.myButton);
-			
-			button.Click += delegate {
-				button.Text = string.Format ("{0} clicks!", count++);
-			};
+			btnTakePic = FindViewById<Button> (Resource.Id.btnTakePic);
+
+            btnTakePic.Click += BtnTakePic_Click;
 		}
-	}
+
+        private void BtnTakePic_Click(object sender, EventArgs e)
+        {
+            btnTakePic.Text = string.Format("{0} clicks!", count++);
+        }
+    }
 }
 
 
